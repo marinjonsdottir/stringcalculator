@@ -7,6 +7,7 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains(",") || text.contains("\n") || text.contains("//")){
+			//negatives(text);
 			return sum(splitNumbers(text));
 		}
 		else
@@ -31,11 +32,27 @@ public class Calculator {
     private static int sum(String[] numbers){
  	    int total = 0;
         for(String number : numbers){
-		    total += toInt(number);
+		    
+		    if(toInt(number) < 1000){
+		    	total += toInt(number);
+		    }
+		    
 		}
+
 		return total;
     }
 
-
+    /*private static void negatives(String[] numbers){
+    	String neg = "";
+    	for(String number : numbers){
+    		if(number.contains("-")){
+    			neg += "," + number;
+    		}
+    	}
+    	if(neg.equals("")){ return; }
+    	else{
+    		throw new RuntimeException("Negatives not allowed: " + neg.substring(1));
+    	}
+    }*/
 
 }
